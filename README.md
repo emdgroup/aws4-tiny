@@ -1,4 +1,7 @@
-[![Build Status](https://img.shields.io/travis/emdgroup/pipeline-changes/master.svg?style=flat-square)](https://travis-ci.org/emdgroup/pipeline-changes) [![GitHub license](https://img.shields.io/github/license/emdgroup/pipeline-changes.svg?style=flat-square)](https://github.com/emdgroup/pipeline-changes/blob/master/LICENSE) [![sponsored by](https://img.shields.io/badge/gzip-6kb.svg?style=flat-square)](http://emdgroup.com) [![sponsored by](https://img.shields.io/badge/sponsored%20by-emdgroup.com-ff55aa.svg?style=flat-square)](http://emdgroup.com)
+[![Build Status](https://img.shields.io/travis/emdgroup/pipeline-changes/master.svg?style=flat-square)](https://travis-ci.org/emdgroup/pipeline-changes)
+[![GitHub license](https://img.shields.io/github/license/emdgroup/pipeline-changes.svg?style=flat-square)](https://github.com/emdgroup/pipeline-changes/blob/master/LICENSE)
+[![sponsored by](https://img.shields.io/badge/gzip-6kb-blue.svg?style=flat-square)](http://emdgroup.com)
+[![sponsored by](https://img.shields.io/badge/sponsored%20by-emdgroup.com-ff55aa.svg?style=flat-square)](http://emdgroup.com)
 
 # aws4-tiny
 
@@ -64,4 +67,4 @@ Thanks to [@mhart](https://github.com/mhart) for [aws4](https://github.com/mhart
 
 Automated browser testing proudly supported by
 
-<img alt="Browser Stack" src="https://www.browserstack.com/images/layout/browserstack-logo-600x315.png" width="200" />
+<a href="https://www.browserstack.com/"><img alt="Browser Stack" src="https://www.browserstack.com/images/layout/browserstack-logo-600x315.png" width="200" /></a>
