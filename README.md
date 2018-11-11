@@ -1,6 +1,6 @@
-[![Build Status](https://img.shields.io/travis/emdgroup/pipeline-changes/master.svg?style=flat-square)](https://travis-ci.org/emdgroup/pipeline-changes)
+[![Build Status](https://img.shields.io/travis/emdgroup/pipeline-changes/master.svg?style=flat-square&logo=travis)](https://travis-ci.org/emdgroup/pipeline-changes)
 [![GitHub license](https://img.shields.io/github/license/emdgroup/pipeline-changes.svg?style=flat-square)](https://github.com/emdgroup/pipeline-changes/blob/master/LICENSE)
-[![sponsored by](https://img.shields.io/badge/gzip-6kb-blue.svg?style=flat-square)](http://emdgroup.com)
+[![sponsored by](https://img.shields.io/badge/size-7kb%20gzipped-blue.svg?style=flat-square)](http://emdgroup.com)
 [![sponsored by](https://img.shields.io/badge/sponsored%20by-emdgroup.com-ff55aa.svg?style=flat-square)](http://emdgroup.com)
 
 # aws4-tiny
@@ -10,7 +10,7 @@ Minimal browser bundle with zero dependencies for signing requests using Amazon'
 
 This package is largely based off of the excellent work of [@mhart's](https://github.com/mhart) [aws4](https://github.com/mhart/aws4). While using `aws4` in the browser is possible, its footprint is rather large (325kb, or 100kb gzipped) due to the number of polyfills that need to be pulled in. `aws4-tiny` provides a few hand-crafted polyfills that were optimized for use with `aws4`.
 
-`aws4-tiny` supports all modern browsers and IE 10+ at just 6kb (gzipped).
+`aws4-tiny` supports all modern browsers and IE 10+ at just under 7kb (gzipped).
 
 ## Installation
 
@@ -35,6 +35,8 @@ aws4.sign(opts, credentials)
 
 ## Usage
 
+Example using vanilla `fetch`:
+
 ```js
 var credentials = {
   accessKeyId: '',
@@ -42,14 +44,41 @@ var credentials = {
   sessionToken: '', // only required for temporary credentials
 };
 
-var signature = aws4.sign({
+var request = aws4.sign({
   service: 'execute-api',
+  region: 'us-east-2',
+  host: 'avkqerpv.execute-api.us-east-2.amazonaws.com',
+  path: '/v1/items',
 }, credentials);
 
-fetch({
-  headers: signature,
-}).then(res => res.json()).then(res => console.log(res));
+fetch('https://avkqerpv.execute-api.us-east-2.amazonaws.com/v1/items', request);
 ```
+
+
+### aws4.fetch
+
+
+**aws4.fetch(url [, opts], credentials)**
+
+**aws4.fetch(opts, credentials)**
+
+`aws4.fetch` is a convenience wrapper around signing a request with `aws4` and then sending it off using `fetch`.
+
+```js
+aws4.fetch('https://avkqerpv.execute-api.us-east-2.amazonaws.com/v1/items', {
+  service: 'execute-api',
+  region: 'us-east-2',
+}, credentials);
+
+
+aws4.fetch({
+  service: 'sqs',
+  region: 'us-east-2',
+  path: '/?Action=ListQueues',
+}, credentials);
+```
+
+**aws4.fetch(Request, credentials)**
 
 ## Tests
 
@@ -59,7 +88,7 @@ fetch({
 
 **Can I use `aws4-tiny` with NodeJS?**
 
-Yes, but it's not recommended. The [aws4](https://github.com/mhart/aws4) package is actually much smaller and faster in a Node environment than `aws4-tiny`.
+Yes, but it's not recommended. The [aws4](https://github.com/mhart/aws4) package is actually much smaller and faster in a Node environment.
 
 ## Thanks
 

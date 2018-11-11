@@ -12,11 +12,7 @@ module.exports = {
     library: 'aws4',
   },
   mode: 'production',
-  devtool: 'nosources-source-map',
   target: 'web',
-  optimization: {
-    minimize: false,
-  },
   resolve: {
     alias: {
       url: 'url-lite',
