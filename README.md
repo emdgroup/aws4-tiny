@@ -35,7 +35,11 @@ aws4.sign(opts, credentials)
 
 ## Usage
 
-Example using vanilla `fetch`:
+**aws4.sign(opts, credentials)**
+
+See [aws4 API](https://github.com/mhart/aws4#API) for details on the `opts` object.
+
+Example using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API):
 
 ```js
 var credentials = {
@@ -56,7 +60,6 @@ fetch('https://avkqerpv.execute-api.us-east-2.amazonaws.com/v1/items', request);
 
 
 ### aws4.fetch
-
 
 **aws4.fetch(url [, opts], credentials)**
 
