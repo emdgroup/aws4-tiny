@@ -30,7 +30,7 @@ const results = tests.map(({ test, request, canonicalString, stringToSign, outpu
   }
 }).filter(i => i);
 
-if(!results.find(t => !t.success)) console.log('pass');
+if(!results.filter(t => !t.success).length) console.log('pass');
 else {
   console.error('fail');
 }

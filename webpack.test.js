@@ -17,4 +17,19 @@ module.exports = {
   optimization: {
     minimize: false,
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: path.resolve(__dirname, 'src'),
+        enforce: 'pre',
+        use: 'source-map-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+    ],
+  },
 };
