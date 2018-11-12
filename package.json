@@ -1,11 +1,19 @@
 {
   "scripts": {
     "build": "npm run build-dist && npm run build-testsuite && npm run build-test && cp test/index.html dist/",
-    "test": "node test",
+    "test": "jest",
+    "test-selenium": "jest selenium",
+    "test-node": "jest node",
     "build-dist": "webpack",
     "build-test": "webpack --config webpack.test.js",
     "build-testsuite": "node scripts/testsuite",
     "concat-sjcl": "cd node_modules/sjcl/core/ && cat sjcl.js hmac.js sha256.js bitArray.js codecString.js codecHex.js exports.js > ../../../src/sjcl.js"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/test/*.js"
+    ],
+    "bail": true
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -13,6 +21,11 @@
     "aws4": "^1.8.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.4",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "sjcl": "^1.0.8",
     "source-map-loader": "^0.2.3",
     "url-lite": "^1.0.2",

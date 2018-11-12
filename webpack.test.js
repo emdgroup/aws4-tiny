@@ -8,7 +8,6 @@ module.exports = {
     filename: 'aws4-test.js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
-    libraryExport: 'default',
     library: 'aws4test',
   },
   mode: 'production',
