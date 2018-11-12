@@ -124,45 +124,57 @@ module.exports = g;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const assert = __webpack_require__(2);
+var assert = __webpack_require__(2);
 
-const RequestSigner = aws4.RequestSigner;
+var RequestSigner = aws4.RequestSigner;
 
-const tests = __webpack_require__(7);
+var tests = __webpack_require__(7);
 
-
-const CREDENTIALS = {
+var CREDENTIALS = {
   accessKeyId: 'AKIDEXAMPLE',
-  secretAccessKey: 'wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY',
+  secretAccessKey: 'wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY'
 };
+var SERVICE = 'service';
+var results = tests.map(function (_ref, idx) {
+  var test = _ref.test,
+      request = _ref.request,
+      canonicalString = _ref.canonicalString,
+      stringToSign = _ref.stringToSign,
+      outputAuth = _ref.outputAuth;
 
-const SERVICE = 'service';
-
-const results = tests.map(({ test, request, canonicalString, stringToSign, outputAuth }, idx) => {
   try {
-    const signer = new RequestSigner(request, CREDENTIALS);
-    if (signer.datetime == null && request.headers['x-amz-date']) {
-      signer.datetime = request.headers['x-amz-date']
-    }
-    assert.equal(signer.canonicalString(), canonicalString);
-    assert.equal(signer.stringToSign(),stringToSign);
-    assert.equal(signer.sign().headers.Authorization, outputAuth);
-    console.log(`${idx + 1} .. ok (${test})`);
-    return { name: test, success: true };
-  } catch(e) {
-    console.log(`${idx + 1} .. not ok (${test})`);
-    console.error(e.message);
-    return { name: test, success: false, error: e.message };
-  }
-}).filter(i => i);
+    var signer = new RequestSigner(request, CREDENTIALS);
 
-if(!results.find(t => !t.success)) console.log('pass');
-else {
+    if (signer.datetime == null && request.headers['x-amz-date']) {
+      signer.datetime = request.headers['x-amz-date'];
+    }
+
+    assert.equal(signer.canonicalString(), canonicalString);
+    assert.equal(signer.stringToSign(), stringToSign);
+    assert.equal(signer.sign().headers.Authorization, outputAuth);
+    console.log("".concat(idx + 1, " .. ok (").concat(test, ")"));
+    return {
+      name: test,
+      success: true
+    };
+  } catch (e) {
+    console.log("".concat(idx + 1, " .. not ok (").concat(test, ")"));
+    console.error(e.message);
+    return {
+      name: test,
+      success: false,
+      error: e.message
+    };
+  }
+}).filter(function (i) {
+  return i;
+});
+if (!results.filter(function (t) {
+  return !t.success;
+}).length) console.log('pass');else {
   console.error('fail');
 }
-
 window.results = results;
-
 
 /***/ }),
 /* 2 */
