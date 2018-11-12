@@ -65,6 +65,8 @@ const browsers = [
   },
 ];
 
+const testSuite = require('./aws-sig-v4-test-suite.json');
+
 browsers.forEach((browser) => {
   const { browserName, browser_version } = browser;
   describe(`browser test for ${browserName} ${browser_version}`, () => {
