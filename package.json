@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "npm run build-dist && npm run build-testsuite && npm run build-test && cp test/index.html dist/",
+    "build": "npm run build-dist && npm run build-test && cp test/index.html dist/",
     "test": "jest",
     "test-selenium": "jest selenium",
     "test-node": "jest node",
