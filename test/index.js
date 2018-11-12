@@ -1,8 +1,5 @@
 const assert = require('assert');
 
-window = {};
-const aws4 = require('../dist/aws4');
-//const aws4 = require('../aws4/aws4');
 const RequestSigner = aws4.RequestSigner;
 
 const tests = require('./aws-sig-v4-test-suite.json');
@@ -25,16 +22,17 @@ const results = tests.map(({ test, request, canonicalString, stringToSign, outpu
     assert.equal(signer.stringToSign(),stringToSign);
     assert.equal(signer.sign().headers.Authorization, outputAuth);
     console.log(`${idx + 1} .. ok (${test})`);
-    return null;
+    return { name: test, success: true };
   } catch(e) {
     console.log(`${idx + 1} .. not ok (${test})`);
     console.error(e.message);
-    return e;
+    return { name: test, success: false, error: e.message };
   }
 }).filter(i => i);
 
-if(!results.length) console.log('pass');
+if(!results.find(t => !t.success)) console.log('pass');
 else {
   console.error('fail');
-  process && process.exit(1);
 }
+
+window.results = results;
