@@ -10,7 +10,15 @@ Minimal browser bundle with zero dependencies for signing requests using Amazon'
 
 This package is largely based off of the excellent work of [@mhart's](https://github.com/mhart) [aws4](https://github.com/mhart/aws4). While using `aws4` in the browser is possible, its footprint is rather large (325kb, or 100kb gzipped) due to the number of polyfills that need to be pulled in. `aws4-tiny` provides a few hand-crafted polyfills that were optimized for use with `aws4`.
 
-`aws4-tiny` supports all modern browsers and IE 10+ at just under 7kb (gzipped).
+`aws4-tiny` supports all modern browsers and IE 10+ at just under 7kb (gzipped). The following browser versions are supported:
+
+| Browser | Version |
+| ------- | ------- |
+| IE | 10+ |
+| Edge | 15+ |
+| Firefox | 47+ |
+| Chrome | 49+ |
+
 
 ## Installation
 
