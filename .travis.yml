@@ -5,9 +5,9 @@ node_js:
 script: |
   npm run build
   if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
-    npm test-selenium
+    npm run test-selenium
   else
-    npm test-node
+    npm run test-node
   fi
 
 cache:
