@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>aws4-tiny</title>
     <script src="aws4.js"></script>
+		<script src="aws4-test.js"></script>
   </head>
   <body>
-    <script src="aws4-test.js"></script>
+		<script>aws4test(aws4, function(res) {
+      document.write('<pre>' + res + '</pre>');
+    });</script>
   </body>
 </html>
