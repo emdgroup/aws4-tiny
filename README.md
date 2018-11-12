@@ -14,7 +14,7 @@ This package is largely based off of the excellent work of [@mhart's](https://gi
 
 | Browser | Version |
 | ------- | ------- |
-| IE | 10+ |
+| IE | 9+ |
 | Edge | 15+ |
 | Firefox | 47+ |
 | Chrome | 49+ |

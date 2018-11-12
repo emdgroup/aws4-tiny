@@ -15,7 +15,7 @@ const capabilities = {
 const browsers = [
   {
     browserName: 'IE',
-    browser_version: '10.0',
+    browser_version: '9.0',
     os: 'Windows',
     os_version: '7',
   },
