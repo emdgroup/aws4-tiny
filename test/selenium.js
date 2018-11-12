@@ -80,12 +80,10 @@ browsers.forEach((browser) => {
 
     afterAll(() => driver.quit(), 5000);
 
-    let page;
-
     test('load site and get title', async () => {
-      page = await driver.get('https://emdgroup.github.io/aws4-tiny/');
+      await driver.get('https://emdgroup.github.io/aws4-tiny/');
       return expect(driver.getTitle()).resolves.toMatch('aws4-tiny');
-    }, 15000);
+    }, 20000);
 
     test('run tests in browser', async () => {
       // wrappedJSObject required for Selenium + Firefox 47
