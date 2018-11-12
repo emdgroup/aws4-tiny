@@ -22,7 +22,7 @@ export function createHash() {
   const hash = new sjcl.hash.sha256();
   return {
     update: (data) => {
-      hash.update(sjcl.codec.arrayBuffer.toBits(data.buffer));
+      hash.update(data);
       return {
         digest: () => sjcl.codec.hex.fromBits(hash.finalize()),
       };
