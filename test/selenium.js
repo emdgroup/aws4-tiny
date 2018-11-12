@@ -61,7 +61,6 @@ const browsers = [
     os: 'Windows',
     os_version: '7',
     'browserstack.selenium_version': '3.2.0',
-    'browserstack.console': 'errors',
   },
 ];
 
