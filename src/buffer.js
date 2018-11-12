@@ -1,4 +1,4 @@
-import sjcl from "./sjcl";
+import sjcl from './sjcl';
 
 export default class Buffer {
   static byteLength(str) {

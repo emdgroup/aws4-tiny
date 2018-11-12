@@ -1,0 +1,16 @@
+env:
+  node: true
+  browser: true
+extends:
+  - airbnb-base
+plugins:
+  - import
+rules:
+  no-return-assign:
+    - error
+    - except-parens
+  no-confusing-arrow:
+    - error
+    - allowParens: true
+  import/no-extraneous-dependencies: 0
+  import/no-unresolved: 0
