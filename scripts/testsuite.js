@@ -3,25 +3,30 @@ const fs = require('fs');
 
 const SERVICE = 'service';
 
-const suiteDir = path.join(__dirname, '../test/aws-sig-v4-test-suite');
-const ignoreDirs = ['get-header-value-multiline']; // too annoying to parse multiline
-let tests = fs.readdirSync(suiteDir);
+const testsDir = path.join(__dirname, '../test');
+
+const suiteDirs = [
+  path.join(testsDir, 'aws-sig-v4-test-suite'),
+  path.join(testsDir, 'aws4-tiny-test-suite'),
+];
+const ignoreDirs = ['aws-sig-v4-test-suite/get-header-value-multiline']; // too annoying to parse multiline
+let tests = [].concat(...suiteDirs.map(s => fs.readdirSync(s).map(f => path.join(s, f))));
 tests = tests
   .concat(
     ...tests.map((file) => {
       if (file.indexOf('.') > -1) return null; // if file
-      return fs.readdirSync(path.join(suiteDir, file)).map(d => path.join(file, d));
+      return fs.readdirSync(file).map(d => path.join(file, d));
     }),
   )
-  .filter(t => t.indexOf('.') === -1 && ignoreDirs.indexOf(t) === -1);
+  .filter(t => t.indexOf('.') === -1 && ignoreDirs.indexOf(path.relative(testsDir, t)) === -1);
 
 const job = tests
   .sort()
   .map((test) => {
-    const files = fs.readdirSync(path.join(suiteDir, test));
+    const files = fs.readdirSync(test);
     if (!files.find(f => f.indexOf('.req') !== -1)) return;
     const readFile = (regex) => {
-      const file = path.join(suiteDir, test, files.filter(regex.test.bind(regex))[0]);
+      const file = path.join(test, files.filter(regex.test.bind(regex))[0]);
       return fs.readFileSync(file, 'utf8').replace(/\r/g, '');
     };
     const request = readFile(/\.req$/);
@@ -56,12 +61,12 @@ const job = tests
       path: pathname,
       headers,
       body,
-      doNotModifyHeaders: true,
+      doNotModifyHeaders: !!test.match(/urlencoded/),
       doNotEncodePath: true,
     };
 
     return {
-      test,
+      test: path.relative(path.join(__dirname, '../test'), test),
       request: signer,
       canonicalString,
       stringToSign,
