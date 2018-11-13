@@ -1,0 +1,1 @@
+AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20150830/us-east-1/service/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date;x-amz-target, Signature=fdfbe672450edb66bb32ff5b43b747199a1d86728ecc1afde544f74c8efe6526

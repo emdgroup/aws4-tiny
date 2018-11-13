@@ -1,0 +1,11 @@
+POST
+/
+
+content-length:29
+content-type:application/x-amz-json-1.1
+host:example.amazonaws.com
+x-amz-date:20150830T123600Z
+x-amz-target:CodePipeline_20150709.putJobFailureResult
+
+content-length;content-type;host;x-amz-date;x-amz-target
+e7dc1234f42e084e451d63ac4b894eb7edc21c8ae702d12b8abcbd9cb8248a89
