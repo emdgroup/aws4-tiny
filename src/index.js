@@ -34,8 +34,9 @@ aws4.fetch = (...args) => {
     }
   } else {
     signer = new RequestSigner(...args);
+    signer.request.protocol = 'https:';
   }
-  const { pathname, search } = urllib.parse(signer.request.path);
+  const { pathname, search } = urllib.parse('path' in signer.request ? signer.request.path : '');
   const url = urllib.format({
     pathname,
     search,
