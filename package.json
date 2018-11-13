@@ -15,13 +15,13 @@
   },
   "author": "Moritz Onken <onken@netcubed.de>",
   "scripts": {
-    "build": "npm run build-dist && npm run build-test && cp test/index.html dist/",
+    "build": "npm run build-dist && npm run build-test",
     "prepack": "rm -rf dist/ && npm run build-dist && npm run test-node",
     "test": "jest",
     "test-selenium": "jest selenium",
     "test-node": "jest node",
     "build-dist": "npm run concat-sjcl && webpack",
-    "build-test": "webpack --config webpack.test.js",
+    "build-test": "webpack --config webpack.test.js && cp test/index.html dist/",
     "build-testsuite": "node scripts/testsuite",
     "concat-sjcl": "cd node_modules/sjcl/core/ && cat sjcl.js hmac.js sha256.js bitArray.js codecString.js codecHex.js exports.js > ../../../src/sjcl.js"
   },
